@@ -1,0 +1,4 @@
+src/setupTests.ts
+storybook/*
+jest.config.js
+*.spec.tsx

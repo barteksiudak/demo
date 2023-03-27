@@ -1,0 +1,16 @@
+repos:
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.50.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+  hooks:
+    - id: terraform_fmt
+    - id: terraform_validate
+    - id: terraform_docs_replace
+      args: ['--sort-by-required']
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0  # Use the ref you want to point at
+    hooks:
+    -   id: check-yaml
+    -   id: detect-aws-credentials
+    -   id: detect-private-key
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace

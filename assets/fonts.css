@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'nunito';
+  src: url('fonts/nunito/NunitoSans-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'nunito-semi-bold';
+  src: url('fonts/nunito/NunitoSans-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'nunito-bold';
+  src: url('fonts/nunito/NunitoSans-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
