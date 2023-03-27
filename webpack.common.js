@@ -46,14 +46,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.join(__dirname, './node_modules/tesseract.js-core/tesseract-core.wasm.js'),
-          to: path.join(__dirname, './dist/tesseract'),
-        },
-        {
-          from: path.join(__dirname, './node_modules/tesseract.js/dist/worker.min.js'),
-          to: path.join(__dirname, './dist/tesseract'),
-        },
-        {
           from: path.join(__dirname, 'assets'),
         },
       ],
