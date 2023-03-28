@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { Route, RouteProps } from 'react-router-dom';
 
-import { LandingPage, PageNotFound } from '../views';
+import { SurveyPage, LandingPage, PageNotFound } from '../views';
 import { Container, Header, RouteContent } from '../components';
-import { LANDING_PAGE, PAGE_NOT_FOUND } from '../routes';
+import { SURVEY_PAGE, LANDING_PAGE, PAGE_NOT_FOUND } from '../routes';
 
 type RootProps = {
   key: string;
@@ -35,6 +35,18 @@ export const sideNavRoots: RootProps[] = [
     path: LANDING_PAGE.path,
     exact: true,
     title: LANDING_PAGE.title,
+  },
+  {
+    key: 'survay-page',
+    icon: '',
+    component: () => (
+      <RouteComponent>
+        <SurveyPage />
+      </RouteComponent>
+    ),
+    path: SURVEY_PAGE.path,
+    exact: true,
+    title: SURVEY_PAGE.title,
   },
 ];
 

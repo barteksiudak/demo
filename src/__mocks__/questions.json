@@ -1,0 +1,310 @@
+[
+  {
+      "id": "Q-1",
+      "label": "You're really busy at work and a colleague is telling you their life story and personal woes. You:",
+      "answers": [
+          {
+              "id": "Q-1_1",
+              "label": "Don't dare to interrupt them"
+          },
+          {
+              "id": "Q-1_2",
+              "label": "Think it's more important to give them some of your time; work can wait"
+          },
+          {
+              "id": "Q-1_3",
+              "label": "Listen, but with only with half an ear"
+          },
+          {
+              "id": "Q-1_4",
+              "label": "Interrupt and explain that you are really busy at the moment"
+          }
+      ]
+  },
+  {
+      "id": "Q-2",
+      "label": "You've been sitting in the doctor's waiting room for more than 25 minutes. You:",
+      "answers": [
+          {
+              "id": "Q-2_1",
+              "label": "Look at your watch every two minutes"
+          },
+          {
+              "id": "Q-2_2",
+              "label": "Bubble with inner anger, but keep quiet"
+          },
+          {
+              "id": "Q-2_3",
+              "label": "Explain to other equally impatient people in the room that the doctor is always running late"
+          },
+          {
+              "id": "Q-2_4",
+              "label": "Complain in a loud voice, while tapping your foot impatiently"
+          }
+      ]
+  },
+  {
+      "id": "Q-3",
+      "label": "You're having an animated discussion with a colleague regarding a project that you're in charge of. You:",
+      "answers": [
+          {
+              "id": "Q-3_1",
+              "label": "Don't dare contradict them"
+          },
+          {
+              "id": "Q-3_2",
+              "label": "Think that they are obviously right"
+          },
+          {
+              "id": "Q-3_3",
+              "label": "Defend your own point of view, tooth and nail"
+          },
+          {
+              "id": "Q-3_4",
+              "label": "Continuously interrupt your colleague"
+          }
+      ]
+  },
+  {
+      "id": "Q-4",
+      "label": "You are taking part in a guided tour of a museum. You:",
+      "answers": [
+          {
+              "id": "Q-4_1",
+              "label": "Are a bit too far towards the back so don't really hear what the guide is saying"
+          },
+          {
+              "id": "Q-4_2",
+              "label": "Follow the group without question"
+          },
+          {
+              "id": "Q-4_3",
+              "label": "Make sure that everyone is able to hear properly"
+          },
+          {
+              "id": "Q-4_4",
+              "label": "Are right up the front, adding your own comments in a loud voice"
+          }
+      ]
+  },
+  {
+      "id": "Q-5",
+      "label": "During dinner parties at your home, you have a hard time with people who:",
+      "answers": [
+          {
+              "id": "Q-5_1",
+              "label": "Ask you to tell a story in front of everyone else"
+          },
+          {
+              "id": "Q-5_2",
+              "label": "Talk privately between themselves"
+          },
+          {
+              "id": "Q-5_3",
+              "label": "Hang around you all evening"
+          },
+          {
+              "id": "Q-5_4",
+              "label": "Always drag the conversation back to themselves"
+          }
+      ]
+  },
+  {
+      "id": "Q-6",
+      "label": "You crack a joke at work, but nobody seems to have noticed. You:",
+      "answers": [
+          {
+              "id": "Q-6_1",
+              "label": "Think it's for the best — it was a lame joke anyway"
+          },
+          {
+              "id": "Q-6_2",
+              "label": "Wait to share it with your friends after work"
+          },
+          {
+              "id": "Q-6_3",
+              "label": "Try again a bit later with one of your colleagues"
+          },
+          {
+              "id": "Q-6_4",
+              "label": "Keep telling it until they pay attention"
+          }
+      ]
+  },
+  {
+      "id": "Q-7",
+      "label": "This morning, your agenda seems to be free. You:",
+      "answers": [
+          {
+              "id": "Q-7_1",
+              "label": "Know that somebody will find a reason to come and bother you"
+          },
+          {
+              "id": "Q-7_2",
+              "label": "Heave a sigh of relief and look forward to a day without stress"
+          },
+          {
+              "id": "Q-7_3",
+              "label": "Question your colleagues about a project that's been worrying you"
+          },
+          {
+              "id": "Q-7_4",
+              "label": "Pick up the phone and start filling up your agenda with meetings"
+          }
+      ]
+  },
+  {
+      "id": "Q-8",
+      "label": "During dinner, the discussion moves to a subject about which you know nothing at all. You:",
+      "answers": [
+          {
+              "id": "Q-8_1",
+              "label": "Don't dare show that you don't know anything about the subject"
+          },
+          {
+              "id": "Q-8_2",
+              "label": "Barely follow the discussion"
+          },
+          {
+              "id": "Q-8_3",
+              "label": "Ask lots of questions to learn more about it"
+          },
+          {
+              "id": "Q-8_4",
+              "label": "Change the subject of discussion"
+          }
+      ]
+  },
+  {
+      "id": "Q-9",
+      "label": "You're out with a group of friends and there's a person who's quite shy and doesn't talk much. You:",
+      "answers": [
+          {
+              "id": "Q-9_1",
+              "label": "Notice that they're alone, but don't go over to talk with them"
+          },
+          {
+              "id": "Q-9_2",
+              "label": "Go and have a chat with them"
+          },
+          {
+              "id": "Q-9_3",
+              "label": "Shoot some friendly smiles in their direction"
+          },
+          {
+              "id": "Q-9_4",
+              "label": "Hardly notice them at all"
+          }
+      ]
+  },
+  {
+      "id": "Q-10",
+      "label": "At work, somebody asks for your help for the hundredth time. You:",
+      "answers": [
+          {
+              "id": "Q-10_1",
+              "label": "Give them a hand, as usual"
+          },
+          {
+              "id": "Q-10_2",
+              "label": "Accept — you're known for being helpful"
+          },
+          {
+              "id": "Q-10_3",
+              "label": "Ask them, please, to find somebody else for a change"
+          },
+          {
+              "id": "Q-10_4",
+              "label": "Loudly make it known that you're annoyed"
+          }
+      ]
+  },
+  {
+      "id": "Q-11",
+      "label": "You've been see a movie with your family and the reviews are mixed. You:",
+      "answers": [
+          {
+              "id": "Q-11_1",
+              "label": "Don't share your point of view with anyone"
+          },
+          {
+              "id": "Q-11_2",
+              "label": "Didn't like the film, but keep your views to yourself when asked"
+          },
+          {
+              "id": "Q-11_3",
+              "label": "State your point of view with enthusiasm"
+          },
+          {
+              "id": "Q-11_4",
+              "label": "Try to bring the others round to your point of view"
+          }
+      ]
+  },
+  {
+      "id": "Q-12",
+      "label": "A friend arrives late for your meeting. You:",
+      "answers": [
+          {
+              "id": "Q-12_1",
+              "label": "Say, ‘It's not a problem,' even if that's not what you really think"
+          },
+          {
+              "id": "Q-12_2",
+              "label": "Give them a filthy look and sulk for the rest of the evening"
+          },
+          {
+              "id": "Q-12_3",
+              "label": "Tell them, ‘You're too much! Have you seen the time?'"
+          },
+          {
+              "id": "Q-12_4",
+              "label": "Make a scene in front of everyone"
+          }
+      ]
+  },
+  {
+      "id": "Q-13",
+      "label": "You can't find your car keys. You:",
+      "answers": [
+          {
+              "id": "Q-13_1",
+              "label": "Don't want anyone to find out, so you take the bus instead"
+          },
+          {
+              "id": "Q-13_2",
+              "label": "Panic and search madly without asking anyone for help"
+          },
+          {
+              "id": "Q-13_3",
+              "label": "Grumble without telling your family why you're in a bad mood"
+          },
+          {
+              "id": "Q-13_4",
+              "label": "Accuse those around you for misplacing them"
+          }
+      ]
+  },
+  {
+      "id": "Q-14",
+      "label": "It's time for your annual appraisal with your boss. You:",
+      "answers": [
+          {
+              "id": "Q-14_1",
+              "label": "Go with great hesitation as these sessions are torture for you"
+          },
+          {
+              "id": "Q-14_2",
+              "label": "Look forward to hearing what your boss thinks about you and expects from you"
+          },
+          {
+              "id": "Q-14_3",
+              "label": "Rehearse ad nauseam the arguments and ideas that you've prepared for the meeting"
+          },
+          {
+              "id": "Q-14_4",
+              "label": "Go along unprepared as you are confident and like improvising"
+          }
+      ]
+  }
+]

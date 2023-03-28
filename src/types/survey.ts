@@ -1,3 +1,10 @@
-import { AnObject } from './common';
+export type Answer = {
+  id: string;
+  label: string;
+};
 
-export type Survey = AnObject;
+export type Survey = {
+  id: string;
+  label: string;
+  answer: Answer[];
+};
