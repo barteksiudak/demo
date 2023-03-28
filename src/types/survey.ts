@@ -6,5 +6,5 @@ export type Answer = {
 export type Survey = {
   id: string;
   label: string;
-  answer: Answer[];
+  answers: Answer[];
 };

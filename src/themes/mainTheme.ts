@@ -220,7 +220,7 @@ const mainTheme = {
       },
     },
     primary: {
-      padding: `${size.sm}px ${size.ml}px`,
+      padding: `${size.sm}px ${size.xxl}px`,
       borderRadius: size.s,
       typography: typography.h6,
       backgroundColor: color.green1,

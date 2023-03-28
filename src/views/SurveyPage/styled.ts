@@ -3,12 +3,15 @@ import { ContainerStyled, Paper } from '../../components/content/Container';
 import { getStyleValue } from '../../compositions';
 
 export default styled(ContainerStyled)`
+  max-width: 1200px;
+  margin: auto;
+
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
   grid-template-rows: auto;
 
   grid-template-areas:
-    'startTest startTest startTest loremOne'
+    'survayArea survayArea survayArea survayArea'
     'loremTwo loremTwo loremThree loremThree';
 
   ${({
@@ -18,17 +21,16 @@ export default styled(ContainerStyled)`
   }) => `
     @media screen and (max-width: ${getStyleValue(tablet)}) {
       grid-template-areas:
-        'startTest startTest startTest startTest'
-        'loremOne loremOne loremOne loremOne'
+        'survayArea survayArea survayArea survayArea'
         'loremTwo loremTwo loremTwo loremTwo'
         'loremThree loremThree loremThree loremThree';
     }
   `}
 `;
 
-export const StartTestStyled = styled(Paper)`
+export const SurvayAreaStyled = styled(Paper)`
   display: block;
-  grid-area: startTest;
+  grid-area: survayArea;
 `;
 
 export const LoremOne = styled(Paper)`
