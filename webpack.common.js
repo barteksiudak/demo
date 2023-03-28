@@ -5,10 +5,6 @@ const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    app: path.join(__dirname, 'src', 'index.ts'),
-    'pdf.worker': path.join(__dirname, './node_modules/pdfjs-dist/build/pdf.worker.js'),
-  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
@@ -54,8 +50,5 @@ module.exports = {
       Buffer: ['buffer', 'Buffer'],
     }),
     new Dotenv(),
-    new webpack.NormalModuleReplacementPlugin(/^pdfjs-dist$/, (resource) => {
-      resource.request = path.join(__dirname, './node_modules/pdfjs-dist/webpack');
-    }),
   ],
 };
