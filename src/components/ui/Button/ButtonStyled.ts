@@ -192,8 +192,7 @@ export const ContentStyled = styled.span`
 
 export const SpinnerButton = styled(Spinner)`
   position: absolute;
-  top: -3px;
-  left: -36px;
+  left: ${({ theme: { size } }) => getStyleValue(size.xl * -1)};
   font-size: 2.5px;
   margin: 0;
 `;
