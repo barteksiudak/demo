@@ -2,7 +2,7 @@ const color = {
   text: '#606060',
   primary: '#007c4d',
   secondary: '#b900ed',
-  contrast: '#ffffff',
+  contrast: '#191919',
   error: '#E53535',
   error1: 'rgba(225, 55, 55, .5)',
   success: 'rgba(65, 175, 70, .1)',
@@ -22,7 +22,7 @@ const color = {
   green5: '#496E4C',
   green6: '#3A5A40',
   green7: '#344E41',
-  background: '#191919',
+  background: '#ffffff',
 };
 
 const gradient = {
@@ -262,7 +262,7 @@ const mainTheme = {
       borderRadius: 0,
       typography: typography.h6,
       backgroundColor: 'transparent',
-      color: color.green1,
+      color: color.green4,
       border: 'none',
       shadow: shadow.none,
       iconMarginRight: 0,
@@ -275,8 +275,8 @@ const mainTheme = {
         border: 'none',
         backgroundColor: 'transparent',
         shadow: shadow.none,
-        color: color.green1,
-        fill: color.green1,
+        color: color.green4,
+        fill: color.green4,
         textDecoration: 'underline',
       },
       disabled: {
@@ -287,12 +287,12 @@ const mainTheme = {
       },
       active: {
         backgroundColor: 'transparent',
-        color: color.green1,
+        color: color.green4,
         padding: 0,
         border: 'none',
         borderRadius: 0,
         shadow: shadow.none,
-        fill: color.green1,
+        fill: color.green4,
         textDecoration: 'underline',
       },
     },
