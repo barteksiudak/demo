@@ -50,6 +50,7 @@ export default function Button({
   rotateIcon,
   iconSize: iconSizeProp,
   iconColor: iconColorProp,
+  tabIndex,
   title = '',
 }: IButton): ReactElement {
   const history = useHistory();
@@ -118,6 +119,7 @@ export default function Button({
       width={currentWidth}
       rotateIcon={rotateIcon}
       title={title}
+      tabIndex={tabIndex}
     >
       <ContentStyled>
         {icon && <Icon name={icon} color={iconColor} size={iconSizeProp || iconSize} />}

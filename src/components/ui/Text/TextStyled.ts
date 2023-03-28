@@ -11,13 +11,14 @@ export interface IText {
   className?: string;
   inline?: boolean;
   center?: boolean;
+  right?: boolean;
 }
 
-interface IAttrs {
+interface Attrs {
   className?: string;
 }
 
-export default styled.span.attrs<IAttrs>({})<IText>(
+export default styled.span.attrs<Attrs>({})<IText>(
   ({
     typography: typographyName = 'p',
     bold = false,
@@ -27,6 +28,7 @@ export default styled.span.attrs<IAttrs>({})<IText>(
     color,
     inline = true,
     center = false,
+    right = false,
   }) => {
     const {
       [typographyName]: { fontFamily, fontFamilyBold, fontSize, lineHeight },
@@ -36,11 +38,13 @@ export default styled.span.attrs<IAttrs>({})<IText>(
 
     return `
       text-align: ${center ? 'center' : 'left'};
+      text-align: ${right ? 'right' : 'left'};
       font-family: ${bold ? fontFamilyBold : fontFamily};
       font-size: ${getStyleValue(fontSize)};
       line-height: ${getStyleValue(lineHeight)};
       ${color ? `color: ${colorTheme[color]};` : ''}
       ${inline ? '' : 'display: block;'}
+      ${right ? `display: flex; justify-content: flex-end; width: 100%;` : ''}
       ${
         !hasTextTransform
           ? ''

@@ -33,10 +33,20 @@ export const ContainerContentStyled = styled.div(
   },
 );
 
+export const ContainerStyled = styled.div(
+  ({ theme: { size } }) => `
+    display: grid;
+    margin: ${getStyleValue(size.l)};
+    gap: ${getStyleValue(size.l)};
+  `,
+);
+
 export const Paper = styled.div(
   ({ theme: { color, size } }) => `
-    padding: ${getStyleValue(size.s)};
-    background-color: ${color.contrast};
+    display: flex;
+    align-items: center;
+    padding: ${getStyleValue(size.m)};
+    background-color: ${color.background};
     border-radius: ${getStyleValue(size.xs)};
     width: 100%;
   `,

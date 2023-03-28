@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle(
   ({
     theme: {
-      color: { text, grey6: background },
+      color: { text, green1: background },
     },
   }) => `
     html {
