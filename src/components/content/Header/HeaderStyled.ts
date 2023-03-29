@@ -13,5 +13,6 @@ export default styled.div(
     justify-content: space-between;
     align-items: center;
     background-color: ${theme.color.green2};
+    z-index: 5;
   `,
 );
