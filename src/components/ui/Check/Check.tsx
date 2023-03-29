@@ -30,7 +30,7 @@ export default function Check({
       {isCheckbox ? (
         <>
           <CheckboxStyled id={id} checked={checked} onChange={onChange} tabIndex={tabIndex} hasError={hasError} />
-          {checked && <Icon color={hasError ? 'error100' : 'primary100'} size="sm" name="check" />}
+          {checked && <Icon color={hasError ? 'error100' : 'primary100'} size="xl" name="check" />}
         </>
       ) : (
         <RadioStyled id={id} onChange={onChange} value={value} checked={checked} tabIndex={tabIndex} />

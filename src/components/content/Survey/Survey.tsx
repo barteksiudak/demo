@@ -1,37 +1,74 @@
-import { useQuery } from 'react-query';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getSurvey } from '../../../api/survey';
+import { useQuery, useMutation } from 'react-query';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { analysePersonality, AnalyseResponse, getSurvey } from '../../../api/survey';
 import { Button, Spinner, Text } from '../../ui';
-import { Survey as SurveyData } from '../../../types';
+import { Nullable, Survey as SurveyData, Request } from '../../../types';
 import Answers from './Answers';
 import SurveyContainerStyled, { ActionButtonsStyled } from './styled';
+import Analyse from './Analyse';
 
 export default function Survey(): JSX.Element {
   const [isValid, setIsValid] = useState(false);
   const [answers, setAnswers] = useState<string[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [analyse, setAnalyse] = useState('');
+
+  const analysedAnswersRef = useRef<string[]>([]);
+  const httpRef = useRef<Request<AnalyseResponse>>();
+
   const { data: questions, isLoading } = useQuery<SurveyData[]>('servey', () => getSurvey());
+
+  const analyseMutation = useMutation(
+    (payload: string[]) => {
+      if (httpRef.current && httpRef.current.cancel) {
+        httpRef.current.cancel();
+      }
+      httpRef.current = analysePersonality(payload);
+      return httpRef.current;
+    },
+    {
+      onSuccess: (response) => {
+        const { data } = response as { data: { analyse: string } };
+        setAnalyse(data.analyse);
+        analysedAnswersRef.current = answers;
+      },
+      onError: (response) => {
+        // eslint-disable-next-line no-console
+        console.error(response);
+      },
+    },
+  );
+
+  const questionsLastIndex = useMemo((): Nullable<number> => {
+    if (!questions) {
+      return null;
+    }
+
+    return questions.length - 1;
+  }, [questions]);
 
   useEffect(() => {
     setIsValid(false);
   }, [questions]);
 
   useEffect(() => {
-    setIsValid(!!answers[questionIndex]);
-  }, [answers, questionIndex]);
+    const canSendForm = String(analysedAnswersRef.current) !== String(answers) || questionIndex !== questionsLastIndex;
+    setIsValid(!!answers[questionIndex] && canSendForm);
+  }, [answers, questionIndex, questionsLastIndex]);
 
   const isLastQuestion = useMemo(
-    (): boolean => !!questions && questionIndex === questions.length - 1,
-    [questionIndex, questions],
+    (): boolean => questionIndex === questionsLastIndex,
+    [questionIndex, questionsLastIndex],
   );
 
   const goNext = useCallback(() => {
     if (isLastQuestion) {
-      console.log('Send the form!', answers);
+      analyseMutation.mutate(answers);
+      setIsValid(false);
       return;
     }
     setQuestionIndex((currentIndex) => currentIndex + 1);
-  }, [answers, isLastQuestion]);
+  }, [answers, analyseMutation, isLastQuestion]);
 
   if (!questions || isLoading) {
     return <Spinner />;
@@ -80,11 +117,12 @@ export default function Survey(): JSX.Element {
               Previous
             </Button>
           )}
-          <Button tabIndex={currentQuestion.answers.length + 1} disabled={!isValid} isLoading={isLoading}>
+          <Button tabIndex={currentQuestion.answers.length + 1} disabled={!isValid || isLoading} isLoading={isLoading}>
             {isLastQuestion ? 'Submit form' : 'Next question'}
           </Button>
         </ActionButtonsStyled>
       </form>
+      <Analyse isLoading={analyseMutation.isLoading} text={analyse} />
     </SurveyContainerStyled>
   );
 }
