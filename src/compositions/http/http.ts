@@ -1,4 +1,4 @@
-import { AnObject, HttpResponse } from '../../types';
+import { AnObject, HttpResponse, Request } from '../../types';
 
 interface QueryProps {
   method?: 'get' | 'post' | 'delete' | 'put' | 'options';
@@ -41,7 +41,7 @@ export const validateResponse = <T = unknown>(data: HttpResponse<T>): HttpRespon
   return data;
 };
 
-export default function http<T = unknown>({ method = 'get', url, payload }: QueryProps): Promise<HttpResponse<T>> {
+export default function http<T = unknown>({ method = 'get', url, payload }: QueryProps): Request<T> {
   const controller = new AbortController();
   const { signal } = controller;
   let body;
