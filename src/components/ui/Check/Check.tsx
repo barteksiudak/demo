@@ -11,6 +11,7 @@ export interface CheckProps {
   hasError?: boolean;
   id: string;
   tabIndex?: number;
+  disabled?: boolean;
 }
 
 export default function Check({
@@ -22,18 +23,33 @@ export default function Check({
   type = 'checkbox',
   hasError,
   tabIndex,
+  disabled,
 }: CheckProps): ReactElement {
   const isCheckbox = type === 'checkbox';
 
   return (
-    <CheckContainerStyled>
+    <CheckContainerStyled disabled={disabled}>
       {isCheckbox ? (
         <>
-          <CheckboxStyled id={id} checked={checked} onChange={onChange} tabIndex={tabIndex} hasError={hasError} />
+          <CheckboxStyled
+            id={id}
+            checked={checked}
+            onChange={onChange}
+            tabIndex={tabIndex}
+            hasError={hasError}
+            disabled={disabled}
+          />
           {checked && <Icon color={hasError ? 'error100' : 'primary100'} size="xl" name="check" />}
         </>
       ) : (
-        <RadioStyled id={id} onChange={onChange} value={value} checked={checked} tabIndex={tabIndex} />
+        <RadioStyled
+          id={id}
+          onChange={onChange}
+          value={value}
+          checked={checked}
+          tabIndex={tabIndex}
+          disabled={disabled}
+        />
       )}
       {label && <LabelStyled onClick={onChange}>{label}</LabelStyled>}
     </CheckContainerStyled>

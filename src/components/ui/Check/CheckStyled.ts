@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Text from '../Text';
-import { getBoxShadow } from '../../../compositions';
+import { getBoxShadow, getStyleValue } from '../../../compositions';
 
 export interface CheckStyledProps {
   hasError?: boolean;
@@ -24,7 +24,6 @@ export const CheckboxStyled = styled.input.attrs({ type: 'checkbox' })<CheckStyl
   }) =>
     `
       position: relative;
-      width: ${width}px;
       height: ${height}px;
       margin: 0;
       &:focus {
@@ -127,15 +126,17 @@ export const LabelStyled = styled(Text)`
   cursor: pointer;
 `;
 
-export const CheckContainerStyled = styled.div(
+export const CheckContainerStyled = styled.div<{ disabled?: boolean }>(
   ({
     theme: {
-      checkbox: { width, height },
+      checkbox: { width, height, padding },
     },
+    disabled,
   }) =>
     `
       position: relative;
       display: flex;
+      gap: ${getStyleValue(padding)};
       svg {
         position: absolute;
         left: ${width / 2}px;
@@ -144,5 +145,7 @@ export const CheckContainerStyled = styled.div(
         z-index: 1;
         pointer-events: none;
       }
+
+      ${disabled ? 'opacity: .7;' : ''}
     `,
 );

@@ -1,11 +1,14 @@
-import { Spinner, Text } from '../../ui';
+import { Button, Spinner, Text } from '../../ui';
+import { ActionButtonsStyled } from './styled';
 
 type AnalyseProps = {
   text: string;
   isLoading: boolean;
+  goToFirstQuestion: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  resetSurvey: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 };
 
-export default function Anlyse({ text, isLoading }: AnalyseProps): JSX.Element {
+export default function Anlyse({ text, isLoading, resetSurvey, goToFirstQuestion }: AnalyseProps): JSX.Element {
   if (isLoading) {
     return <Spinner />;
   }
@@ -20,6 +23,14 @@ export default function Anlyse({ text, isLoading }: AnalyseProps): JSX.Element {
         Your analyse!
       </Text>
       {text}
+      <ActionButtonsStyled>
+        <Button asLink onClick={goToFirstQuestion}>
+          Show my answers
+        </Button>
+        <Button asLink disabled={isLoading} onClick={resetSurvey}>
+          Re-take test
+        </Button>
+      </ActionButtonsStyled>
     </>
   );
 }

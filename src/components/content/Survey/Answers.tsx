@@ -6,17 +6,22 @@ import AnswersStyled from './styled';
 type AnswersProps = {
   question: Survey;
   selected?: string;
+  reviewMode: boolean;
   onChange: (id: string) => void;
 };
 
-export default function Answers({ question: { answers }, selected, onChange }: AnswersProps): JSX.Element {
+export default function Answers({ question: { answers }, selected, reviewMode, onChange }: AnswersProps): JSX.Element {
   const [checkedId, setCheckedId] = useState<string>();
   const handleChange = useCallback(
     (id: string) => () => {
+      if (reviewMode) {
+        return;
+      }
+
       onChange(id);
       setCheckedId(id);
     },
-    [onChange],
+    [reviewMode, onChange],
   );
 
   useEffect(() => {
@@ -34,6 +39,7 @@ export default function Answers({ question: { answers }, selected, onChange }: A
           value={id}
           label={label}
           tabIndex={i + 1}
+          disabled={reviewMode}
         />
       ))}
     </AnswersStyled>

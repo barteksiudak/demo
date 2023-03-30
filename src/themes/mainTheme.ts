@@ -242,8 +242,8 @@ const mainTheme = {
         textDecoration: 'none',
       },
       disabled: {
-        backgroundColor: color.grey5,
-        color: color.grey3,
+        backgroundColor: color.grey7,
+        color: color.grey5,
         border: 'none',
       },
       active: {
@@ -638,11 +638,11 @@ const mainTheme = {
     border: `1px solid ${color.primary}`,
     borderRadius: 3,
     hover: {
-      backgroundColor: color.grey6,
+      backgroundColor: color.green2,
       shadow: shadow.simple,
     },
     active: {
-      backgroundColor: color.grey6,
+      backgroundColor: color.green2,
       border: `1px solid ${color.primary}`,
       shadow: shadow.simple,
     },

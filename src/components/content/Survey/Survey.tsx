@@ -1,5 +1,6 @@
 import { useQuery, useMutation } from 'react-query';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { analysePersonality, AnalyseResponse, getSurvey } from '../../../api/survey';
 import { Button, Spinner, Text } from '../../ui';
 import { Nullable, Survey as SurveyData, Request } from '../../../types';
@@ -16,7 +17,8 @@ export default function Survey(): JSX.Element {
   const analysedAnswersRef = useRef<string[]>([]);
   const httpRef = useRef<Request<AnalyseResponse>>();
 
-  const { data: questions, isLoading } = useQuery<SurveyData[]>('servey', () => getSurvey());
+  const history = useHistory();
+  const { data: questions, isLoading, refetch } = useQuery<SurveyData[]>('servey', () => getSurvey());
 
   const analyseMutation = useMutation(
     (payload: string[]) => {
@@ -39,6 +41,10 @@ export default function Survey(): JSX.Element {
     },
   );
 
+  const showAnalyse = useMemo((): boolean => {
+    return new URLSearchParams(history.location.search).get('show') === 'analyse' && !!analyse;
+  }, [history.location.search, analyse]);
+
   const questionsLastIndex = useMemo((): Nullable<number> => {
     if (!questions) {
       return null;
@@ -52,9 +58,13 @@ export default function Survey(): JSX.Element {
   }, [questions]);
 
   useEffect(() => {
-    const canSendForm = String(analysedAnswersRef.current) !== String(answers) || questionIndex !== questionsLastIndex;
+    const isReviewingAnswers = questionIndex === questionsLastIndex && !!analyse;
+    const canSendForm =
+      String(analysedAnswersRef.current) !== String(answers) ||
+      questionIndex !== questionsLastIndex ||
+      isReviewingAnswers;
     setIsValid(!!answers[questionIndex] && canSendForm);
-  }, [answers, questionIndex, questionsLastIndex]);
+  }, [analyse, answers, questionIndex, questionsLastIndex]);
 
   const isLastQuestion = useMemo(
     (): boolean => questionIndex === questionsLastIndex,
@@ -63,12 +73,43 @@ export default function Survey(): JSX.Element {
 
   const goNext = useCallback(() => {
     if (isLastQuestion) {
-      analyseMutation.mutate(answers);
-      setIsValid(false);
+      if (!analyse) {
+        analyseMutation.mutate(answers);
+      }
+      history.push({ search: '?show=analyse' });
       return;
     }
+    history.push({ search: '' });
     setQuestionIndex((currentIndex) => currentIndex + 1);
-  }, [answers, analyseMutation, isLastQuestion]);
+  }, [isLastQuestion, history, analyse, analyseMutation, answers]);
+
+  const goToFirstQuestion = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+      e.preventDefault();
+
+      setQuestionIndex(0);
+      history.push({ search: '' });
+    },
+    [history],
+  );
+
+  const resetSurvey = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+      e.preventDefault();
+
+      analysedAnswersRef.current = [];
+      refetch().catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(err);
+      });
+      setIsValid(true);
+      setAnalyse('');
+      setQuestionIndex(0);
+      setAnswers([]);
+      history.push({ search: '' });
+    },
+    [history, refetch],
+  );
 
   if (!questions || isLoading) {
     return <Spinner />;
@@ -100,29 +141,52 @@ export default function Survey(): JSX.Element {
   const goBack = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
 
+    history.push({ search: '' });
     setQuestionIndex((currentIndex) => currentIndex - 1);
   };
 
+  const finishTestText = analyse ? 'Show analyse' : 'Submit form';
+
   return (
     <SurveyContainerStyled gapSize="m">
-      <Text inline={false}>
-        Question {questionIndex + 1}/{questions.length}
-      </Text>
-      <Text typography="h5">{currentQuestion.label}</Text>
-      <form name="survey" onSubmit={handleSubmit}>
-        <Answers question={currentQuestion} onChange={handleChangeAnswer} selected={answers[questionIndex]} />
-        <ActionButtonsStyled>
-          {questionIndex > 0 && (
-            <Button tabIndex={currentQuestion.answers.length + 2} asLink onClick={goBack}>
-              Previous
-            </Button>
-          )}
-          <Button tabIndex={currentQuestion.answers.length + 1} disabled={!isValid || isLoading} isLoading={isLoading}>
-            {isLastQuestion ? 'Submit form' : 'Next question'}
-          </Button>
-        </ActionButtonsStyled>
-      </form>
-      <Analyse isLoading={analyseMutation.isLoading} text={analyse} />
+      {!showAnalyse && (
+        <>
+          <Text inline={false}>
+            Question {questionIndex + 1}/{questions.length}
+          </Text>
+          <Text typography="h5">{currentQuestion.label}</Text>
+          <form name="survey" onSubmit={handleSubmit}>
+            <Answers
+              question={currentQuestion}
+              onChange={handleChangeAnswer}
+              selected={answers[questionIndex]}
+              reviewMode={!!analyse}
+            />
+            <ActionButtonsStyled>
+              {questionIndex > 0 && (
+                <Button tabIndex={currentQuestion.answers.length + 2} asLink onClick={goBack}>
+                  Previous
+                </Button>
+              )}
+              <Button
+                tabIndex={currentQuestion.answers.length + 1}
+                disabled={!isValid || isLoading}
+                isLoading={isLoading}
+              >
+                {isLastQuestion ? finishTestText : 'Next question'}
+              </Button>
+            </ActionButtonsStyled>
+          </form>
+        </>
+      )}
+      {showAnalyse && (
+        <Analyse
+          goToFirstQuestion={goToFirstQuestion}
+          resetSurvey={resetSurvey}
+          isLoading={analyseMutation.isLoading}
+          text={analyse}
+        />
+      )}
     </SurveyContainerStyled>
   );
 }
