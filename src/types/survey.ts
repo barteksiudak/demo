@@ -8,3 +8,8 @@ export type Survey = {
   label: string;
   answers: Answer[];
 };
+
+export type Result = {
+  title: string;
+  text: string;
+};

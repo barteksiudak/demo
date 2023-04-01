@@ -1,5 +1,5 @@
 import http, { getEndpoint } from '../compositions/http';
-import { Survey, Request } from '../types';
+import { Survey, Request, Result } from '../types';
 import { HttpResponse } from '../types/http';
 import { GET_SURVEY, RESULT } from './endpoints';
 
@@ -13,10 +13,8 @@ export const getSurvey = async (): Promise<Survey[]> => {
   return data;
 };
 
-export type AnalyseResponse = { analyse: string };
-
-export const analysePersonality = (payload: string[]): Request<AnalyseResponse> =>
-  http<AnalyseResponse>({
+export const analyzePersonality = (payload: string[]): Request<Result> =>
+  http<Result>({
     method: 'post',
     url: RESULT,
     payload,

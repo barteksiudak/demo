@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { Route, RouteProps } from 'react-router-dom';
 
-import { SurveyPage, LandingPage, PageNotFound } from '../views';
+import { SurveyPage, LandingPage } from '../views';
 import { Container, Header, RouteContent } from '../components';
-import { SURVEY_PAGE, LANDING_PAGE, PAGE_NOT_FOUND } from '../routes';
+import { SURVEY_PAGE, LANDING_PAGE } from '../routes';
 
 type RootProps = {
   key: string;
@@ -23,7 +23,7 @@ function RouteComponent({ children }: { children: ReactNode }) {
   );
 }
 
-export const sideNavRoots: RootProps[] = [
+export const roots: RootProps[] = [
   {
     key: 'landing-page',
     icon: '',
@@ -48,22 +48,6 @@ export const sideNavRoots: RootProps[] = [
     exact: true,
     title: SURVEY_PAGE.title,
   },
-];
-
-export const roots: RootProps[] = [
-  {
-    key: 'page-not-found',
-    icon: '',
-    component: () => (
-      <RouteComponent>
-        <PageNotFound />
-      </RouteComponent>
-    ),
-    path: PAGE_NOT_FOUND.path,
-    exact: true,
-    title: LANDING_PAGE.title,
-  },
-  ...sideNavRoots,
 ];
 
 export function MapRoots({ rootsList: list }: { rootsList: RootProps[] }): JSX.Element {
