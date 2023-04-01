@@ -1,38 +1,38 @@
 import { useQuery, useMutation } from 'react-query';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { analysePersonality, AnalyseResponse, getSurvey } from '../../../api/survey';
+import { analyzePersonality, getSurvey } from '../../../api/survey';
 import { Button, Spinner, Text } from '../../ui';
-import { Nullable, Survey as SurveyData, Request } from '../../../types';
+import { Nullable, Survey as SurveyData, Request, Result } from '../../../types';
 import Answers from './Answers';
 import SurveyContainerStyled, { ActionButtonsStyled } from './styled';
-import Analyse from './Analyse';
+import ResultComponent from './Result';
 
 export default function Survey(): JSX.Element {
   const [isValid, setIsValid] = useState(false);
   const [answers, setAnswers] = useState<string[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [analyse, setAnalyse] = useState('');
+  const [result, setResult] = useState<Result>();
 
-  const analysedAnswersRef = useRef<string[]>([]);
-  const httpRef = useRef<Request<AnalyseResponse>>();
+  const cachedAnswersRef = useRef<string[]>([]);
+  const httpRef = useRef<Request<Result>>();
 
   const history = useHistory();
-  const { data: questions, isLoading, refetch } = useQuery<SurveyData[]>('servey', () => getSurvey());
+  const { data: questions, isFetching, refetch } = useQuery<SurveyData[]>('servey', () => getSurvey());
 
-  const analyseMutation = useMutation(
+  const surveyMutation = useMutation(
     (payload: string[]) => {
       if (httpRef.current && httpRef.current.cancel) {
         httpRef.current.cancel();
       }
-      httpRef.current = analysePersonality(payload);
+      httpRef.current = analyzePersonality(payload);
       return httpRef.current;
     },
     {
       onSuccess: (response) => {
-        const { data } = response as { data: { analyse: string } };
-        setAnalyse(data.analyse);
-        analysedAnswersRef.current = answers;
+        const { data } = response as { data: Result };
+        setResult(data);
+        cachedAnswersRef.current = answers;
       },
       onError: (response) => {
         // eslint-disable-next-line no-console
@@ -41,9 +41,9 @@ export default function Survey(): JSX.Element {
     },
   );
 
-  const showAnalyse = useMemo((): boolean => {
-    return new URLSearchParams(history.location.search).get('show') === 'analyse' && !!analyse;
-  }, [history.location.search, analyse]);
+  const showResult = useMemo((): boolean => {
+    return new URLSearchParams(history.location.search).get('show') === 'result' && !!result;
+  }, [history.location.search, result]);
 
   const questionsLastIndex = useMemo((): Nullable<number> => {
     if (!questions) {
@@ -58,13 +58,13 @@ export default function Survey(): JSX.Element {
   }, [questions]);
 
   useEffect(() => {
-    const isReviewingAnswers = questionIndex === questionsLastIndex && !!analyse;
+    const isReviewingAnswers = questionIndex === questionsLastIndex && !!result;
     const canSendForm =
-      String(analysedAnswersRef.current) !== String(answers) ||
+      String(cachedAnswersRef.current) !== String(answers) ||
       questionIndex !== questionsLastIndex ||
       isReviewingAnswers;
     setIsValid(!!answers[questionIndex] && canSendForm);
-  }, [analyse, answers, questionIndex, questionsLastIndex]);
+  }, [result, answers, questionIndex, questionsLastIndex]);
 
   const isLastQuestion = useMemo(
     (): boolean => questionIndex === questionsLastIndex,
@@ -73,15 +73,15 @@ export default function Survey(): JSX.Element {
 
   const goNext = useCallback(() => {
     if (isLastQuestion) {
-      if (!analyse) {
-        analyseMutation.mutate(answers);
+      if (!result) {
+        surveyMutation.mutate(answers);
       }
-      history.push({ search: '?show=analyse' });
+      history.push({ search: '?show=result' });
       return;
     }
     history.push({ search: '' });
     setQuestionIndex((currentIndex) => currentIndex + 1);
-  }, [isLastQuestion, history, analyse, analyseMutation, answers]);
+  }, [isLastQuestion, history, result, surveyMutation, answers]);
 
   const goToFirstQuestion = useCallback(
     (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
@@ -97,13 +97,13 @@ export default function Survey(): JSX.Element {
     (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       e.preventDefault();
 
-      analysedAnswersRef.current = [];
+      cachedAnswersRef.current = [];
       refetch().catch((err) => {
         // eslint-disable-next-line no-console
         console.error(err);
       });
       setIsValid(true);
-      setAnalyse('');
+      setResult(undefined);
       setQuestionIndex(0);
       setAnswers([]);
       history.push({ search: '' });
@@ -111,7 +111,7 @@ export default function Survey(): JSX.Element {
     [history, refetch],
   );
 
-  if (!questions || isLoading) {
+  if (!questions || isFetching) {
     return <Spinner />;
   }
 
@@ -145,11 +145,11 @@ export default function Survey(): JSX.Element {
     setQuestionIndex((currentIndex) => currentIndex - 1);
   };
 
-  const finishTestText = analyse ? 'Show analyse' : 'Submit form';
+  const finishTestText = result ? 'Show result' : 'Submit form';
 
   return (
     <SurveyContainerStyled gapSize="m">
-      {!showAnalyse && (
+      {!showResult && (
         <>
           <Text inline={false}>
             Question {questionIndex + 1}/{questions.length}
@@ -160,7 +160,7 @@ export default function Survey(): JSX.Element {
               question={currentQuestion}
               onChange={handleChangeAnswer}
               selected={answers[questionIndex]}
-              reviewMode={!!analyse}
+              reviewMode={!!result}
             />
             <ActionButtonsStyled>
               {questionIndex > 0 && (
@@ -170,8 +170,8 @@ export default function Survey(): JSX.Element {
               )}
               <Button
                 tabIndex={currentQuestion.answers.length + 1}
-                disabled={!isValid || isLoading}
-                isLoading={isLoading}
+                disabled={!isValid || isFetching || surveyMutation.isLoading}
+                isLoading={isFetching || surveyMutation.isLoading}
               >
                 {isLastQuestion ? finishTestText : 'Next question'}
               </Button>
@@ -179,12 +179,13 @@ export default function Survey(): JSX.Element {
           </form>
         </>
       )}
-      {showAnalyse && (
-        <Analyse
+      {showResult && (
+        <ResultComponent
           goToFirstQuestion={goToFirstQuestion}
           resetSurvey={resetSurvey}
-          isLoading={analyseMutation.isLoading}
-          text={analyse}
+          isLoading={surveyMutation.isLoading}
+          title={result && result.title}
+          text={result && result.text}
         />
       )}
     </SurveyContainerStyled>

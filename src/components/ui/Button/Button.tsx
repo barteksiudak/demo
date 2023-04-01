@@ -76,7 +76,7 @@ export default function Button({
 
     e.preventDefault();
 
-    if (!disabled) {
+    if (!disabled && !isLoading) {
       history.push(href);
     }
   };

@@ -5,19 +5,23 @@
       "answers": [
           {
               "id": "Q-1_1",
-              "label": "Don't dare to interrupt them"
+              "label": "Don't dare to interrupt them",
+              "score": 25
           },
           {
               "id": "Q-1_2",
-              "label": "Think it's more important to give them some of your time; work can wait"
+              "label": "Think it's more important to give them some of your time; work can wait",
+              "score": 50
           },
           {
               "id": "Q-1_3",
-              "label": "Listen, but with only with half an ear"
+              "label": "Listen, but with only with half an ear",
+              "score": 75
           },
           {
               "id": "Q-1_4",
-              "label": "Interrupt and explain that you are really busy at the moment"
+              "label": "Interrupt and explain that you are really busy at the moment",
+              "score": 100
           }
       ]
   },
@@ -27,19 +31,23 @@
       "answers": [
           {
               "id": "Q-2_1",
-              "label": "Look at your watch every two minutes"
+              "label": "Look at your watch every two minutes",
+              "score": 25
           },
           {
               "id": "Q-2_2",
-              "label": "Bubble with inner anger, but keep quiet"
+              "label": "Bubble with inner anger, but keep quiet",
+              "score": 50
           },
           {
               "id": "Q-2_3",
-              "label": "Explain to other equally impatient people in the room that the doctor is always running late"
+              "label": "Explain to other equally impatient people in the room that the doctor is always running late",
+              "score": 75
           },
           {
               "id": "Q-2_4",
-              "label": "Complain in a loud voice, while tapping your foot impatiently"
+              "label": "Complain in a loud voice, while tapping your foot impatiently",
+              "score": 100
           }
       ]
   },
@@ -49,19 +57,23 @@
       "answers": [
           {
               "id": "Q-3_1",
-              "label": "Don't dare contradict them"
+              "label": "Don't dare contradict them",
+              "score": 25
           },
           {
               "id": "Q-3_2",
-              "label": "Think that they are obviously right"
+              "label": "Think that they are obviously right",
+              "score": 50
           },
           {
               "id": "Q-3_3",
-              "label": "Defend your own point of view, tooth and nail"
+              "label": "Defend your own point of view, tooth and nail",
+              "score": 75
           },
           {
               "id": "Q-3_4",
-              "label": "Continuously interrupt your colleague"
+              "label": "Continuously interrupt your colleague",
+              "score": 100
           }
       ]
   },
@@ -71,19 +83,23 @@
       "answers": [
           {
               "id": "Q-4_1",
-              "label": "Are a bit too far towards the back so don't really hear what the guide is saying"
+              "label": "Are a bit too far towards the back so don't really hear what the guide is saying",
+              "score": 25
           },
           {
               "id": "Q-4_2",
-              "label": "Follow the group without question"
+              "label": "Follow the group without question",
+              "score": 50
           },
           {
               "id": "Q-4_3",
-              "label": "Make sure that everyone is able to hear properly"
+              "label": "Make sure that everyone is able to hear properly",
+              "score": 75
           },
           {
               "id": "Q-4_4",
-              "label": "Are right up the front, adding your own comments in a loud voice"
+              "label": "Are right up the front, adding your own comments in a loud voice",
+              "score": 100
           }
       ]
   },
@@ -93,19 +109,23 @@
       "answers": [
           {
               "id": "Q-5_1",
-              "label": "Ask you to tell a story in front of everyone else"
+              "label": "Ask you to tell a story in front of everyone else",
+              "score": 25
           },
           {
               "id": "Q-5_2",
-              "label": "Talk privately between themselves"
+              "label": "Talk privately between themselves",
+              "score": 50
           },
           {
               "id": "Q-5_3",
-              "label": "Hang around you all evening"
+              "label": "Hang around you all evening",
+              "score": 75
           },
           {
               "id": "Q-5_4",
-              "label": "Always drag the conversation back to themselves"
+              "label": "Always drag the conversation back to themselves",
+              "score": 100
           }
       ]
   },
@@ -115,19 +135,23 @@
       "answers": [
           {
               "id": "Q-6_1",
-              "label": "Think it's for the best — it was a lame joke anyway"
+              "label": "Think it's for the best — it was a lame joke anyway",
+              "score": 25
           },
           {
               "id": "Q-6_2",
-              "label": "Wait to share it with your friends after work"
+              "label": "Wait to share it with your friends after work",
+              "score": 50
           },
           {
               "id": "Q-6_3",
-              "label": "Try again a bit later with one of your colleagues"
+              "label": "Try again a bit later with one of your colleagues",
+              "score": 75
           },
           {
               "id": "Q-6_4",
-              "label": "Keep telling it until they pay attention"
+              "label": "Keep telling it until they pay attention",
+              "score": 100
           }
       ]
   },
@@ -137,19 +161,23 @@
       "answers": [
           {
               "id": "Q-7_1",
-              "label": "Know that somebody will find a reason to come and bother you"
+              "label": "Know that somebody will find a reason to come and bother you",
+              "score": 25
           },
           {
               "id": "Q-7_2",
-              "label": "Heave a sigh of relief and look forward to a day without stress"
+              "label": "Heave a sigh of relief and look forward to a day without stress",
+              "score": 50
           },
           {
               "id": "Q-7_3",
-              "label": "Question your colleagues about a project that's been worrying you"
+              "label": "Question your colleagues about a project that's been worrying you",
+              "score": 75
           },
           {
               "id": "Q-7_4",
-              "label": "Pick up the phone and start filling up your agenda with meetings"
+              "label": "Pick up the phone and start filling up your agenda with meetings",
+              "score": 100
           }
       ]
   },
@@ -159,19 +187,23 @@
       "answers": [
           {
               "id": "Q-8_1",
-              "label": "Don't dare show that you don't know anything about the subject"
+              "label": "Don't dare show that you don't know anything about the subject",
+              "score": 25
           },
           {
               "id": "Q-8_2",
-              "label": "Barely follow the discussion"
+              "label": "Barely follow the discussion",
+              "score": 50
           },
           {
               "id": "Q-8_3",
-              "label": "Ask lots of questions to learn more about it"
+              "label": "Ask lots of questions to learn more about it",
+              "score": 75
           },
           {
               "id": "Q-8_4",
-              "label": "Change the subject of discussion"
+              "label": "Change the subject of discussion",
+              "score": 100
           }
       ]
   },
@@ -181,19 +213,23 @@
       "answers": [
           {
               "id": "Q-9_1",
-              "label": "Notice that they're alone, but don't go over to talk with them"
+              "label": "Notice that they're alone, but don't go over to talk with them",
+              "score": 25
           },
           {
               "id": "Q-9_2",
-              "label": "Go and have a chat with them"
+              "label": "Go and have a chat with them",
+              "score": 50
           },
           {
               "id": "Q-9_3",
-              "label": "Shoot some friendly smiles in their direction"
+              "label": "Shoot some friendly smiles in their direction",
+              "score": 75
           },
           {
               "id": "Q-9_4",
-              "label": "Hardly notice them at all"
+              "label": "Hardly notice them at all",
+              "score": 100
           }
       ]
   },
@@ -203,19 +239,23 @@
       "answers": [
           {
               "id": "Q-10_1",
-              "label": "Give them a hand, as usual"
+              "label": "Give them a hand, as usual",
+              "score": 25
           },
           {
               "id": "Q-10_2",
-              "label": "Accept — you're known for being helpful"
+              "label": "Accept — you're known for being helpful",
+              "score": 50
           },
           {
               "id": "Q-10_3",
-              "label": "Ask them, please, to find somebody else for a change"
+              "label": "Ask them, please, to find somebody else for a change",
+              "score": 75
           },
           {
               "id": "Q-10_4",
-              "label": "Loudly make it known that you're annoyed"
+              "label": "Loudly make it known that you're annoyed",
+              "score": 100
           }
       ]
   },
@@ -225,19 +265,23 @@
       "answers": [
           {
               "id": "Q-11_1",
-              "label": "Don't share your point of view with anyone"
+              "label": "Don't share your point of view with anyone",
+              "score": 25
           },
           {
               "id": "Q-11_2",
-              "label": "Didn't like the film, but keep your views to yourself when asked"
+              "label": "Didn't like the film, but keep your views to yourself when asked",
+              "score": 50
           },
           {
               "id": "Q-11_3",
-              "label": "State your point of view with enthusiasm"
+              "label": "State your point of view with enthusiasm",
+              "score": 75
           },
           {
               "id": "Q-11_4",
-              "label": "Try to bring the others round to your point of view"
+              "label": "Try to bring the others round to your point of view",
+              "score": 100
           }
       ]
   },
@@ -247,19 +291,23 @@
       "answers": [
           {
               "id": "Q-12_1",
-              "label": "Say, ‘It's not a problem,' even if that's not what you really think"
+              "label": "Say, ‘It's not a problem,' even if that's not what you really think",
+              "score": 25
           },
           {
               "id": "Q-12_2",
-              "label": "Give them a filthy look and sulk for the rest of the evening"
+              "label": "Give them a filthy look and sulk for the rest of the evening",
+              "score": 50
           },
           {
               "id": "Q-12_3",
-              "label": "Tell them, ‘You're too much! Have you seen the time?'"
+              "label": "Tell them, ‘You're too much! Have you seen the time?'",
+              "score": 75
           },
           {
               "id": "Q-12_4",
-              "label": "Make a scene in front of everyone"
+              "label": "Make a scene in front of everyone",
+              "score": 100
           }
       ]
   },
@@ -269,19 +317,23 @@
       "answers": [
           {
               "id": "Q-13_1",
-              "label": "Don't want anyone to find out, so you take the bus instead"
+              "label": "Don't want anyone to find out, so you take the bus instead",
+              "score": 25
           },
           {
               "id": "Q-13_2",
-              "label": "Panic and search madly without asking anyone for help"
+              "label": "Panic and search madly without asking anyone for help",
+              "score": 50
           },
           {
               "id": "Q-13_3",
-              "label": "Grumble without telling your family why you're in a bad mood"
+              "label": "Grumble without telling your family why you're in a bad mood",
+              "score": 75
           },
           {
               "id": "Q-13_4",
-              "label": "Accuse those around you for misplacing them"
+              "label": "Accuse those around you for misplacing them",
+              "score": 100
           }
       ]
   },
@@ -291,19 +343,23 @@
       "answers": [
           {
               "id": "Q-14_1",
-              "label": "Go with great hesitation as these sessions are torture for you"
+              "label": "Go with great hesitation as these sessions are torture for you",
+              "score": 25
           },
           {
               "id": "Q-14_2",
-              "label": "Look forward to hearing what your boss thinks about you and expects from you"
+              "label": "Look forward to hearing what your boss thinks about you and expects from you",
+              "score": 50
           },
           {
               "id": "Q-14_3",
-              "label": "Rehearse ad nauseam the arguments and ideas that you've prepared for the meeting"
+              "label": "Rehearse ad nauseam the arguments and ideas that you've prepared for the meeting",
+              "score": 75
           },
           {
               "id": "Q-14_4",
-              "label": "Go along unprepared as you are confident and like improvising"
+              "label": "Go along unprepared as you are confident and like improvising",
+              "score": 100
           }
       ]
   }
